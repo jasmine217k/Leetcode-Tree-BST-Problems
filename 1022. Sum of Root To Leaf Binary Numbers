@@ -1,0 +1,26 @@
+
+class Solution {
+public:
+    void form(TreeNode *root,int &ans,string s)
+    {
+        if(root==NULL)
+            return;
+        s+=to_string(root->val);
+         if(root->left==NULL&&root->right==NULL)
+        {
+            ans+=stoi(s,0,2);   // function to convert binary to integer directly
+        }
+        form(root->left,ans,s);    // recursively calling for left & right subtrees.
+        form(root->right,ans,s);
+       
+          
+        
+    }
+    int sumRootToLeaf(TreeNode* root) {
+       
+        string s="";
+         int ans=0;
+        form(root,ans,s);   
+        return ans;
+    }
+};
